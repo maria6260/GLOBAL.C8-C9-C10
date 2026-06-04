@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulación y Modelado de Distribuciones</title>
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="globalC9.css">
+  <!-- Librerías -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Scripts -->
+  <script src="global.js" defer></script>
+  <script src="globalC9.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Proyecto C8–C10: Simulación y Ajuste de Distribuciones</h1>
+    <nav>
+      <button onclick="setMode('simulation')">Modo Simulación</button>
+      <button onclick="setMode('data')">Modo Modelado de Datos</button>
+      <button onclick="setMode('ai')">Modo Ajuste con IA</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Sección Simulación -->
+    <section id="simulation" class="mode">
+      <h2>Simulación de Distribuciones</h2>
+      <label>Distribución:
+        <select id="distribution" onchange="updateDistribution()">
+          <option value="uniform">Uniforme</option>
+          <option value="triangular">Triangular</option>
+          <option value="normal">Normal</option>
+        </select>
+      </label>
+      <div id="parameters"></div>
+      <canvas id="pdfCanvas" width="600" height="400"></canvas>
+      <div id="probabilityResults"></div>
+    </section>
+
+    <!-- Sección Modelado con Datos -->
+    <section id="data" class="mode hidden">
+      <h2>Modelado con Datos</h2>
+      <input type="file" id="dataUpload" accept=".csv">
+      <label>Distribución a ajustar:
+        <select id="fitDistribution">
+          <option value="uniform">Uniforme</option>
+          <option value="triangular">Triangular</option>
+          <option value="normal">Normal</option>
+        </select>
+      </label>
+      <button onclick="fitData()">Ajustar</button>
+      <canvas id="fitCanvas" width="600" height="400"></canvas>
+      <div id="fitResults"></div>
+    </section>
+
+    <!-- Sección Ajuste con IA (C9) -->
+    <section id="ai" class="mode hidden">
+      <h2>Herramienta de Ajuste de Distribuciones (IA)</h2>
+      <label for="dataInput">Ingrese datos (separados por comas) o cargue archivo CSV:</label>
+      <textarea id="dataInput" rows="5" cols="50"></textarea>
+      <input type="file" id="fileInput" accept=".csv">
+
+      <label for="distributionSelect">Seleccione distribución a ajustar:</label>
+      <select id="distributionSelect">
+        <option value="uniform">Uniforme</option>
+        <option value="triangular">Triangular</option>
+        <option value="linear">Lineal</option>
+        <option value="piecewise">Piecewise Uniforme</option>
+        <option value="normal">Normal</option>
+      </select>
+      <button id="fitButton">Ajustar distribución</button>
+
+      <div id="results">
+        <h2>Resultados</h2>
+        <div id="parameters"></div>
+        <div id="interpretation"></div>
+        <div id="plots">
+          <div id="histogram"></div>
+          <div id="pdf"></div>
+          <div id="combined"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Proyecto C8–C10 | Desplegado en GitHub Pages</p>
+    <p>Enlace al sitio: 
+      <a href="https://tuusuario.github.io/C9-distribuciones" target="_blank">
+        GitHub Pages
+      </a>
+    </p>
+    <p>Conversación AI usada: 
+      <a href="https://copilot.microsoft.com" target="_blank">
+        Link a conversación
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
